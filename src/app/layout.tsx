@@ -1,5 +1,9 @@
 // src/app/layout.tsx
 
+import AuthProvider from "@/components/AuthProvider";
+import NavigationMenu from "@/components/NavigationMenu";
+import NavMenu from "@/components/NavigationMenu";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -7,13 +11,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <AuthProvider>
       <body>
-        <div style={{minHeight: "100vh", display: "flex", flexDirection: "column"}}>
-          <main style={{ flexGrow: 1 }}>
+        <NavigationMenu/>
+        <div style={{minHeight: "0vh", display: "flex", flexDirection: "column"}}>
+          <main style={{ flexGrow: 0 }}>
           {children}
           </main>
         </div>
       </body>
+        
+        </AuthProvider>
     </html>
   );
 }

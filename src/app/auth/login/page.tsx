@@ -1,13 +1,25 @@
-// src/app/auth/login/page.tsx
+'use client'; // This page should be client-side
 
-import * as React from 'react';
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import React from 'react';
+import { signIn } from 'next-auth/react';
+import { Button, Container, Typography, Box } from '@mui/material';
 
-export default function Login() {
+export default function LoginPage() {
+  const handleGoogleLogin = () => {
+    // Trigger Google login via NextAuth
+    signIn('google');
+  };
+
   return (
     <Container>
-      <Typography>Prihlásenie</Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleGoogleLogin}
+          fullWidth
+        >
+          Login with Google
+        </Button>
     </Container>
   );
 }
